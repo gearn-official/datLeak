@@ -1,4 +1,5 @@
 // co-builder-core/codegen.c
+#include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
