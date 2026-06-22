@@ -9,7 +9,7 @@
 static char *read_file(const char *path) {
     FILE *f = fopen(path, "r");
     if (!f) {
-        fprintf(stderr, "co-builder: error: no se pudo abrir '%s'\n", path);
+        fprintf(stderr, "co-builder: error: could not open '%s'\n", path);
         exit(1);
     }
 
@@ -27,7 +27,7 @@ static char *read_file(const char *path) {
 int main(int argc, char **argv) {
     if (argc < 2) {
         fprintf(stderr, "co-builder v0.1 - part of datLeak\n");
-        fprintf(stderr, "uso: co-builder <archivo.c> [-o salida.asm]\n");
+        fprintf(stderr, "use: co-builder <archive.c> [-o output.asm]\n");
         return 1;
     }
 
@@ -40,13 +40,13 @@ int main(int argc, char **argv) {
         }
     }
 
-    printf("co-builder: compilando '%s'...\n", input);
+    printf("co-builder: compiling '%s'...\n", input);
 
     char *src = read_file(input);
     Node *ast = parse(src);
     codegen(ast, output);
 
     free(src);
-    printf("co-builder: listo -> '%s'\n", output);
+    printf("co-builder: ready -> '%s'\n", output);
     return 0;
 }
